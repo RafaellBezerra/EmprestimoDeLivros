@@ -21,12 +21,12 @@ class TelaPrincipal(QWidget):
         layout.addWidget(botaoContarLivros)
         layout.addWidget(botaoSair)
 
-        botaoRegistrar.clicked.connect(self.Emprestar)
-        botaoFazerDevolucao.clicked.connect(self.Devolucao)
-        botaoContarLivros.clicked.connect(self.ContarLivros)
+        botaoRegistrar.clicked.connect(self.RegistrarEmprestimo)
+        botaoFazerDevolucao.clicked.connect(self.FazerDevolucao)
+        botaoContarLivros.clicked.connect(self.ContarLivrosEmprestados)
         botaoSair.clicked.connect(self.close)
 
-    def Emprestar(self):
+    def RegistrarEmprestimo(self):
         nome,ok1 = QInputDialog.getText(self, "emprestimo", "Digite o nome da pessoa")
         if (not (ok1 and nome)):
             return
@@ -41,7 +41,7 @@ class TelaPrincipal(QWidget):
             
         QMessageBox.information(self, "Resultado", resultado)
     
-    def Devolucao(self):
+    def FazerDevolucao(self):
         nome,ok1 = QInputDialog.getText(self, "devolucao", "Digite o nome da pessoa")
         nome = nome.lower()
 
@@ -65,7 +65,7 @@ class TelaPrincipal(QWidget):
         
         QMessageBox.information(self, "Resultado", resultado)
 
-    def ContarLivros(self):
+    def ContarLivrosEmprestados(self):
         resultado = self.sistema.ContarLivrosEmprestados()
         
         QMessageBox.information(self, "Resultado", resultado)
